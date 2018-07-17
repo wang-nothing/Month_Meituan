@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Month_Meituan</string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="my">我的</string>
+    <string name="line">/</string>
+    <string name="mobile_error">账号有误</string>
+    <string name="password_error">密码有误</string>
+    <string name="title_mtwm">美团外卖+</string>
+</resources>

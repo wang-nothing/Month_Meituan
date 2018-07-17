@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <FrameLayout
+        android:id="@+id/main_fragme"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></FrameLayout>
+    <RadioGroup
+        android:id="@+id/main_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <RadioButton
+            android:id="@+id/radio_home"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/check_home"
+            android:gravity="center"
+            android:text="首页"/>
+        <RadioButton
+            android:id="@+id/radio_order"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/check_order"
+            android:gravity="center"
+            android:text="订单" />
+        <RadioButton
+            android:id="@+id/radio_my"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:button="@null"
+            android:layout_height="wrap_content"
+            android:drawableTop="@drawable/check_my"
+            android:gravity="center"
+            android:text="我的" />
+    </RadioGroup>
+
+</LinearLayout>
