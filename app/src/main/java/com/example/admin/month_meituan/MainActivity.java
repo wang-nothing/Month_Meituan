@@ -1,5 +1,8 @@
 package com.example.admin.month_meituan;
 
+import android.Manifest;
+import android.os.Build;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -25,15 +28,17 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         setContentView(R.layout.activity_main);
         initViews();
         initFragmens();
         initFragmeLayout();
+
     }
 
     private void initFragmeLayout() {
         manager = getSupportFragmentManager();
-        manager.beginTransaction().add(R.id.main_fragme,fragments.get(0)).commit();
+        manager.beginTransaction().add(R.id.main_fragme, fragments.get(0)).commit();
         main_group.check(R.id.radio_home);
     }
 
@@ -53,18 +58,18 @@ public class MainActivity extends AppCompatActivity implements RadioGroup.OnChec
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-        switch (i){
+        switch (i) {
             case R.id.radio_home:
                 FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-                transaction.replace(R.id.main_fragme,fragments.get(0)).commit();
+                transaction.replace(R.id.main_fragme, fragments.get(0)).commit();
                 break;
 
             case R.id.radio_order:
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragme,fragments.get(1)).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragme, fragments.get(1)).commit();
                 break;
 
             case R.id.radio_my:
-                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragme,fragments.get(2)).commit();
+                getSupportFragmentManager().beginTransaction().replace(R.id.main_fragme, fragments.get(2)).commit();
                 break;
         }
     }

@@ -1,6 +1,7 @@
 package com.example.admin.month_meituan.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.month_meituan.R;
+import com.example.admin.month_meituan.activity.DetailsActivity;
 import com.example.admin.month_meituan.bean.ProductListBean;
 
 import java.util.List;
@@ -72,6 +74,9 @@ public class MyGridViewAdapter extends BaseAdapter {
             @Override
             public void onClick(View v) {
                 Toast.makeText(context,"你点击了 "+listData.get(pos).getProName(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("text",listData.get(pos).getProName());
+                context.startActivity(intent);
             }
         });
         return convertView;
