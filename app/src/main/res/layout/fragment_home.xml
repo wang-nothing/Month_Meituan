@@ -30,7 +30,7 @@
             android:layout_width="140dp"
             android:layout_height="30dp"
             android:background="@drawable/serch_bg"
-
+            android:text="定位"
             />
 
         <com.example.admin.month_meituan.custom.MyTitle

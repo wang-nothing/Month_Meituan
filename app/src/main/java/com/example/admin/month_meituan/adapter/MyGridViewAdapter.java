@@ -73,7 +73,7 @@ public class MyGridViewAdapter extends BaseAdapter {
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(context,"你点击了 "+listData.get(pos).getProName(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(context,"你点击了 "+listData.get(pos).getProName(), Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(context, DetailsActivity.class);
                 intent.putExtra("text",listData.get(pos).getProName());
                 context.startActivity(intent);

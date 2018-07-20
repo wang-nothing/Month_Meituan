@@ -14,7 +14,7 @@ import com.example.admin.month_meituan.bean.Home_GoodsBean;
 
 import java.util.List;
 
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder> {
+public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder> implements View.OnClickListener {
     private Context context;
     private List<Home_GoodsBean.DataBean> data;
 
@@ -27,6 +27,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder> {
     @Override
     public RecyclerHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(context).inflate(R.layout.home_adapter_item, viewGroup, false);
+        view.setOnClickListener(this);
         return new RecyclerHolder(view);
     }
 
@@ -41,10 +42,29 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerHolder> {
         Glide.with(context).load(data.get(i).getPic_url()).into(recyclerHolder.home_item_image);
         Glide.with(context).load(data.get(i).getDiscounts2().get(0).getIcon_url()).into(recyclerHolder.home_item_discounts2_icon1);
         Glide.with(context).load(data.get(i).getDiscounts2().get(1).getIcon_url()).into(recyclerHolder.home_item_discounts2_icon2);
+        recyclerHolder.itemView.setTag(i);
     }
 
     @Override
     public int getItemCount() {
         return data.size();
+    }
+
+
+
+    private OnItemClickListener mItemClickListener;
+
+    public void setmItemClickListener(OnItemClickListener itemClickListener) {
+        mItemClickListener = itemClickListener;
+    }
+    @Override
+    public void onClick(View view) {
+        if (mItemClickListener != null){
+            mItemClickListener.onItemClick((Integer) view.getTag());
+        }
+    }
+
+    public interface OnItemClickListener{
+        void onItemClick(int i);
     }
 }

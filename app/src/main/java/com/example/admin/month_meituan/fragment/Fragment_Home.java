@@ -25,6 +25,7 @@ import com.example.admin.month_meituan.Home.presenter.Home_Presenter;
 import com.example.admin.month_meituan.Home.view.Iview;
 import com.example.admin.month_meituan.R;
 import com.example.admin.month_meituan.activity.AddressActivity;
+import com.example.admin.month_meituan.activity.FoodActivity;
 import com.example.admin.month_meituan.activity.SearchActivity;
 import com.example.admin.month_meituan.adapter.MyGridViewAdapter;
 import com.example.admin.month_meituan.adapter.MyViewPagerAdapter;
@@ -39,7 +40,7 @@ import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_Home extends Fragment implements ViewPager.OnPageChangeListener, Iview, View.OnClickListener {
+public class Fragment_Home extends Fragment implements ViewPager.OnPageChangeListener, Iview, View.OnClickListener, RecyclerAdapter.OnItemClickListener {
     private static final int CODE_UPDATE_HOME_LIST = 1;
     private ViewPager viewpager;
     private int totalPage;//总的页数
@@ -155,6 +156,7 @@ public class Fragment_Home extends Fragment implements ViewPager.OnPageChangeLis
         recyclerview.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.VERTICAL, false));
         adapter = new RecyclerAdapter(getActivity(), data);
         recyclerview.setAdapter(adapter);
+        adapter.setmItemClickListener(this);
         scollview = view.findViewById(R.id.scollview);
         scollview.setMode(PullToRefreshScrollView.Mode.BOTH);
         ILoadingLayout proxy = scollview.getLoadingLayoutProxy(true, false);
@@ -167,7 +169,6 @@ public class Fragment_Home extends Fragment implements ViewPager.OnPageChangeLis
         footLayout.setPullLabel("向上拽动完成刷新...");
         footLayout.setRefreshingLabel("正在疯刷新数据...");
         footLayout.setReleaseLabel("松开完成刷新...");
-        footLayout.setLoadingDrawable(getResources().getDrawable(R.drawable.timg));
 
     }
 
@@ -223,5 +224,12 @@ public class Fragment_Home extends Fragment implements ViewPager.OnPageChangeLis
             String bian = data1.getStringExtra("bian");
             home_address.setText(bian);
         }
+    }
+
+    @Override
+    public void onItemClick(int i) {
+        Intent intent = new Intent(getActivity(), FoodActivity.class);
+        intent.putExtra("name",data.get(i).getName());
+        startActivity(intent);
     }
 }

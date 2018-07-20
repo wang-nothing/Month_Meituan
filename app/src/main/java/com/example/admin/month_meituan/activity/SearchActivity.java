@@ -1,10 +1,12 @@
 package com.example.admin.month_meituan.activity;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +22,7 @@ import com.example.admin.month_meituan.sousuo.view.Sousuo_Iview;
 
 import java.util.List;
 
-public class SearchActivity extends AppCompatActivity implements View.OnClickListener, Sousuo_Iview {
+public class SearchActivity extends AppCompatActivity implements View.OnClickListener, Sousuo_Iview, AdapterView.OnItemClickListener {
     private TextView search_back;
     private EditText search_et;
     private Button search_btn;
@@ -44,6 +46,7 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
         search_et.setOnClickListener(this);
         search_btn.setOnClickListener(this);
         search_back.setOnClickListener(this);
+        search_lv.setOnItemClickListener(this);
     }
 
     private void initDatas() {
@@ -99,5 +102,12 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
     @Override
     public void sousuo_onFail(int code) {
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        Intent intent = new Intent(SearchActivity.this, FoodActivity.class);
+        intent.putExtra("name",sousuo.get(i).getName());
+        startActivity(intent);
     }
 }

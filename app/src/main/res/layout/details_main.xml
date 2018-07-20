@@ -70,13 +70,8 @@
         android:layout_height="1dp"
         android:layout_marginTop="5dp"
         android:background="#000" />
-    <com.handmark.pulltorefresh.library.PullToRefreshScrollView
-        android:id="@+id/scrollView"
+    <ListView
+        android:id="@+id/details_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
-    </com.handmark.pulltorefresh.library.PullToRefreshScrollView>
+        android:layout_height="match_parent"></ListView>
 </LinearLayout>
