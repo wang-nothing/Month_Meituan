@@ -7,16 +7,15 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.month_meituan.R;
 import com.example.admin.month_meituan.adapter.BaseSearchAdapter;
 import com.example.admin.month_meituan.bean.SousuoBean;
+import com.example.admin.month_meituan.shop.view.FoodActivity;
 import com.example.admin.month_meituan.sousuo.presenter.Sousuo_Presenter;
 import com.example.admin.month_meituan.sousuo.view.Sousuo_Iview;
 
@@ -106,8 +105,8 @@ public class SearchActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-        Intent intent = new Intent(SearchActivity.this, FoodActivity.class);
-        intent.putExtra("name",sousuo.get(i).getName());
-        startActivity(intent);
+        Intent inte = new Intent(SearchActivity.this, FoodActivity.class);
+        inte.putExtra("id",sousuo.get(i).getId());
+        startActivity(inte);
     }
 }

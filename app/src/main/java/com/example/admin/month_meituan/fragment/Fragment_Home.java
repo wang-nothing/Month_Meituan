@@ -18,14 +18,13 @@ import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.admin.month_meituan.Home.presenter.Home_Presenter;
 import com.example.admin.month_meituan.Home.view.Iview;
 import com.example.admin.month_meituan.R;
 import com.example.admin.month_meituan.activity.AddressActivity;
-import com.example.admin.month_meituan.activity.FoodActivity;
+import com.example.admin.month_meituan.shop.view.FoodActivity;
 import com.example.admin.month_meituan.activity.SearchActivity;
 import com.example.admin.month_meituan.adapter.MyGridViewAdapter;
 import com.example.admin.month_meituan.adapter.MyViewPagerAdapter;
@@ -229,7 +228,8 @@ public class Fragment_Home extends Fragment implements ViewPager.OnPageChangeLis
     @Override
     public void onItemClick(int i) {
         Intent intent = new Intent(getActivity(), FoodActivity.class);
-        intent.putExtra("name",data.get(i).getName());
+        intent.putExtra("id",data.get(i).getId());
+        Log.i("TAG", ": "+data.get(i).getId());
         startActivity(intent);
     }
 }

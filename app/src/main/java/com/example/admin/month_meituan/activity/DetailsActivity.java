@@ -3,24 +3,18 @@ package com.example.admin.month_meituan.activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.admin.month_meituan.Home.presenter.Home_Presenter;
 import com.example.admin.month_meituan.Home.view.Iview;
 import com.example.admin.month_meituan.R;
 import com.example.admin.month_meituan.adapter.ListViewAdapter;
-import com.example.admin.month_meituan.adapter.RecyclerAdapter;
 import com.example.admin.month_meituan.bean.Home_GoodsBean;
-import com.handmark.pulltorefresh.library.ILoadingLayout;
-import com.handmark.pulltorefresh.library.PullToRefreshBase;
-import com.handmark.pulltorefresh.library.PullToRefreshScrollView;
+import com.example.admin.month_meituan.shop.view.FoodActivity;
 
 import java.util.List;
 
@@ -89,8 +83,10 @@ public class DetailsActivity extends AppCompatActivity implements Iview, View.On
 
     @Override
     public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//        Toast.makeText(DetailsActivity.this,""+data.get(i).getName(),Toast.LENGTH_SHORT).show();
+//      Toast.makeText(DetailsActivity.this,""+data.get(i).getName(),Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(DetailsActivity.this, FoodActivity.class);
+        intent.putExtra("id",data.get(i).getId());
+        Log.i("TAG", "Details: "+data.get(i).getId());
         startActivity(intent);
     }
 }
